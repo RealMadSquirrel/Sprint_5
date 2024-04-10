@@ -1,4 +1,4 @@
-import time
+from selenium.webdriver.support import expected_conditions
 import settings
 from locators import Locators
 from data import ServiceTestData
@@ -12,9 +12,6 @@ class TestLogin:
         driver.get(settings.URL)
         registration_button = driver.find_element(*Locators.LOGIN_TO_ACCOUNT_BUTTON)
         registration_button.click()
-        (WebDriverWait(driver, settings.MAX_WAIT_TIME)
-         .until(EC.text_to_be_present_in_element(Locators.BUTTON_GO,
-                                                 'Войти')))
 
         email_input = driver.find_element(*Locators.LOGIN_EMAIL_INPUT)
         email_input.send_keys(ServiceTestData.AUTH_EMAIL)
@@ -25,9 +22,8 @@ class TestLogin:
         go_to_button = driver.find_element(*Locators.BUTTON_GO)
         go_to_button.click()
 
-        (WebDriverWait(driver, settings.MAX_WAIT_TIME)
-         .until(EC.text_to_be_present_in_element(Locators.CHECKOUT_BUTTON,
-                                                 'Оформить заказ')))
+        WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
+            expected_conditions.element_to_be_clickable(Locators.CHECKOUT_BUTTON))
 
         assert driver.find_element(*Locators.CHECKOUT_BUTTON).text == "Оформить заказ"
 
@@ -35,9 +31,6 @@ class TestLogin:
         driver.get(settings.URL)
         registration_button = driver.find_element(*Locators.PERSONAL_BUTTON)
         registration_button.click() #переход по кнопке личный кабинет
-        (WebDriverWait(driver, settings.MAX_WAIT_TIME)
-         .until(EC.text_to_be_present_in_element(Locators.BUTTON_GO,
-                                                 'Войти')))
 
         email_input = driver.find_element(*Locators.LOGIN_EMAIL_INPUT)
         email_input.send_keys(ServiceTestData.AUTH_EMAIL)
@@ -48,9 +41,8 @@ class TestLogin:
         go_to_button = driver.find_element(*Locators.BUTTON_GO)
         go_to_button.click()
 
-        (WebDriverWait(driver, settings.MAX_WAIT_TIME)
-         .until(EC.text_to_be_present_in_element(Locators.CHECKOUT_BUTTON,
-                                                 'Оформить заказ')))
+        WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
+            expected_conditions.element_to_be_clickable(Locators.CHECKOUT_BUTTON))
 
         assert driver.find_element(*Locators.CHECKOUT_BUTTON).text == "Оформить заказ"
 
@@ -68,9 +60,8 @@ class TestLogin:
         go_to_button = driver.find_element(*Locators.BUTTON_GO)
         go_to_button.click()
 
-        (WebDriverWait(driver, settings.MAX_WAIT_TIME)
-         .until(EC.text_to_be_present_in_element(Locators.CHECKOUT_BUTTON,
-                                                 'Оформить заказ')))
+        WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
+            expected_conditions.element_to_be_clickable(Locators.CHECKOUT_BUTTON))
 
         assert driver.find_element(*Locators.CHECKOUT_BUTTON).text == "Оформить заказ"
 
@@ -91,9 +82,8 @@ class TestLogin:
         login_button = driver.find_element(*Locators.BUTTON_GO)
         login_button.click()
 
-        (WebDriverWait(driver, settings.MAX_WAIT_TIME)
-         .until(EC.text_to_be_present_in_element(Locators.CHECKOUT_BUTTON,
-                                                 'Оформить заказ')))
+        WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
+            expected_conditions.element_to_be_clickable(Locators.CHECKOUT_BUTTON))
 
         assert driver.find_element(*Locators.CHECKOUT_BUTTON).text == "Оформить заказ"
 

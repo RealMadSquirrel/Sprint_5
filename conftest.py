@@ -1,8 +1,11 @@
 import pytest
 from selenium import webdriver
 import settings
-import random
+from locators import Locators
 from data import ServiceTestData
+from selenium.webdriver.support import expected_conditions as EC, expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+import random
 
 
 @pytest.fixture(scope='function')
@@ -14,12 +17,6 @@ def driver():
 
     chrome_driver.quit()
 
-@pytest.fixture(scope='function')
-def random_email():
-    email = "olgabelova7" + str(random.randrange(100,999)) +"@gmail.com"
-    return email
 
-@pytest.fixture(scope='function')
-def random_password():
-    password = str(random.randrange(100000,999999))
-    return password
+
+
